@@ -7,28 +7,49 @@ var content = canvas.getContext('2d');
 var x=0;
 var store = {};
 
-var draw = function () {
 
-     ball.x = x;
-
-    
-};
 var Ball = function () {
+    this.x = Math.random()*canvas.width;
+    this.moveX = Math.random();
+    this.r = 5 + 5*Math.random();
 
 
-    this.x= 0;
+
     this.draw = function () {
+        //根据此时X的位置重新绘制圆圈圈
 
     }
 };
-store[0] = new Ball();
+
+for(var indexBall = 0;indexBall<10;indexBall++){
+    store[indexBall] = new Ball();
+}
+
+
+// store[0] = new Ball();
+var draw = function () {
+    for(var index in store){
+        store[index].x += store[index].moveX;
+        if(store[index].x > canvas.width){
+            store[index].x = -2*store[index].r;
+        }
+        store[index].draw();
+    }
+
+
+
+    // store[0].x ++;
+    // store[0].draw();
+
+
+};
 
 var render = function () {
     //清除画布
     content.clearRect(0,0,canvas.width,canvas.height);
 
-    //位置变化
-    x++;
+    // //位置变化
+    // x++;
 
     //绘制
     draw();
