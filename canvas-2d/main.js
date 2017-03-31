@@ -18,7 +18,13 @@ var Ball = function () {
     this.draw = function () {
         //根据此时X的位置重新绘制圆圈圈
 
-    }
+        context.beginPath();
+        context.fillStyle = '#369';
+        context.arc(this.x,canvas.height/2,this.r,0,Math.PI*2);
+        context.closePath();
+        context.fill();
+
+    };
 };
 
 for(var indexBall = 0;indexBall<10;indexBall++){
